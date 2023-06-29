@@ -14,7 +14,7 @@ public class BeerServiceImpl implements BeerService {
     public BeerDto getBeerById(UUID id) {
         return BeerDto.builder().id(UUID.randomUUID())
                 .beerName("Heineken")
-                .beerStyle("White")
+                .beerStyle("LAGER")
                 .build();
     }
 
@@ -27,12 +27,15 @@ public class BeerServiceImpl implements BeerService {
 
     @Override
     public void updateBeer(UUID id, BeerDto beerDto) {
-        //todo impl - would add a real impl to update beer
+        BeerDto beerToUpdate = BeerDto.builder().id(id).build();
+        beerToUpdate.setBeerName(beerDto.getBeerName());
+        beerToUpdate.setBeerStyle(beerDto.getBeerStyle());
     }
 
     @Override
     public void deleteById(UUID beerId) {
-        log.debug("Deleting a beer...");
+        BeerDto beerToDelete = BeerDto.builder().id(beerId).build();
+        System.out.println("Deleting the Beer " + beerToDelete.getBeerName());
     }
 
 }

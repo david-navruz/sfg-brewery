@@ -26,12 +26,14 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public void updateCustomer(UUID customerId, CustomerDto customerDto) {
-        //todo impl
+        CustomerDto customerToUpdate = CustomerDto.builder().id(customerId).build();
+        customerToUpdate.setCustomerName(customerDto.getCustomerName());
         log.debug("Updating....");
     }
 
     @Override
     public void deleteById(UUID customerId) {
+        CustomerDto customerToDelete = CustomerDto.builder().id(customerId).build();
         log.debug("Deleting.... ");
     }
 
